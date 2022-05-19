@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h4>የመጽሓፍ ዝርዝር | Books List</h3>
+    <h4 class="mt-10">የመጽሓፍት ቤት ዝርዝር | Library Details</h3>
     <p>The library has the following record counts:</p>
     <ul>
         <li><strong>Books:</strong> {{ num_books }}</li>
@@ -11,5 +11,5 @@
     </ul>
 
 
-    <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+    <footer>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</footer>
 {% endblock %}
