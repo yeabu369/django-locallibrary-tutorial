@@ -1,20 +1,22 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Borrowed books</h1>
+<header class="px-4 pt-5 pb-4">
+  <h1 class="text-xl font-bold">Borrowed books</h1>
+</header>
 
-    {% if bookinstance_list %}
-    <ul>
+<main class="flex flex-col p-4 h-full">
+  {% if bookinstance_list %}
+  <ul>
+    {% for bookinst in bookinstance_list %}
+    <li class="{% if bookinst.is_overdue %}text-danger{% endif %}">
+      <a href="{% url 'book-detail' bookinst.book.pk %}">{{bookinst.book.title}}</a> ({{ bookinst.due_back }})
+    </li>
+    {% endfor %}
+  </ul>
 
-      {% for bookinst in bookinstance_list %} 
-      <li class="{% if bookinst.is_overdue %}text-danger{% endif %}">
-        <a href="{% url 'book-detail' bookinst.book.pk %}">{{bookinst.book.title}}</a> ({{ bookinst.due_back }})        
-      </li>
-      {% endfor %}
-    </ul>
-
-    {% else %}
-      <p>There are no books borrowed.</p>
-    {% endif %}       
+  {% else %}
+  <p class="text-sm">There are no books borrowed.</p>
+  {% endif %}
+</main>
 {% endblock %}
-

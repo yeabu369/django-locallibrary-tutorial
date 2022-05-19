@@ -1,3 +1,4 @@
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,36 +14,83 @@
   <!-- Add additional CSS in static file -->
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  {% tailwind_css %}
 </head>
 
-<body>
-
-  <div class="container-fluid">
+<body class="flex">
+  <div class="container-fluid h-screen">
     <div class="row">
       <div class="col-sm-2">
         {% block sidebar %}
-        <ul class="sidebar-nav">
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="{% url 'books' %}">All books</a></li>
-          <li><a href="{% url 'authors' %}">All authors</a></li>
+        <ul class="flex flex-col space-y-2 sidebar-nav py-3 font-medium">
+          <li>
+            <a href="{% url 'index' %}" class="no-underline hover:text-white">
+              <button class="p-2 bg-gray-200 rounded-sm hover:bg-gray-800 hover:text-white w-full text-left">
+                Home
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'books' %}" class="no-underline hover:text-white">
+              <button class="p-2 bg-gray-200 rounded-sm hover:bg-gray-800 hover:text-white w-full text-left">
+                All books
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'authors' %}" class="no-underline hover:text-white">
+              <button class="p-2 bg-gray-200 rounded-sm hover:bg-gray-800 hover:text-white w-full text-left">
+                All authors
+              </button>
+            </a>
+          </li>
         </ul>
 
-        <ul class="sidebar-nav">
+        <ul class="flex flex-col space-y-3 sidebar-nav mb-2">
           {% if user.is_authenticated %}
-          <li>User: {{ user.get_username }}</li>
-          <li><a href="{% url 'my-borrowed' %}">My Borrowed</a></li>
-          <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
+          <li class="border-2 rounded-md border-gray-800 p-2 text-sm">
+            <h1 class="font-bold">
+              Username
+            </h1>
+            <h2>
+              @{{ user.get_username }}
+            </h2>
+          </li>
+          <li class="">
+            <a href="{% url 'my-borrowed' %}" class="hover:text-black">
+              <button class="p-2 text-sm border bg-gray-200 w-full text-left">
+                My Borrowed
+              </button>
+            </a>
+          </li>
+          <li class=""><a href="{% url 'logout'%}?next={{request.path}}" class="hover:text-black">
+              <button class="p-2 text-sm border bg-gray-200 w-full text-left">
+                Logout
+              </button>
+            </a>
+          </li>
           {% else %}
-          <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+          <li class=""> <a href="{% url 'login'%}?next={{request.path}}" class="hover:text-black">
+              <button class="p-2 text-sm border bg-gray-200 w-full text-left">
+                Login
+              </button>
+            </a>
+          </li>
           {% endif %}
         </ul>
 
         {% if user.is_staff %}
         <hr />
-        <ul class="sidebar-nav">
-          <li>Staff</li>
+        <ul class="flex flex-col space-y-2 sidebar-nav text-sm">
+          <li class="font-bold">Staff</li>
           {% if perms.catalog.can_mark_returned %}
-          <li><a href="{% url 'all-borrowed' %}">All borrowed</a></li>
+          <li>
+            <a href="{% url 'all-borrowed' %}" class="hover:text-black">
+              <button class="w-full p-2 bg-gray-200 text-left rounded-sm">
+                All borrowed
+              </button>
+            </a>
+          </li>
           {% endif %}
         </ul>
         {% endif %}

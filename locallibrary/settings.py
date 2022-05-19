@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['.herokuapp.com','127.0.0.1']
 
 
 # Application definition
+TAILWIND_APP_NAME = 'theme'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -43,7 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Add our new application 
     'catalog.apps.CatalogConfig', #This object was created for us in /catalog/apps.py
+    # 'django_browser_reload',
     'tailwind',
+    'theme',
+    'livereload',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +59,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'livereload.middleware.LiveReloadScript',
+    # 'django_browser_reload.middleware.BrowserReloadMiddleware',
+]
+
+INTERNAL_IPS = [
+    "127.0.0.1",
 ]
 
 ROOT_URLCONF = 'locallibrary.urls'

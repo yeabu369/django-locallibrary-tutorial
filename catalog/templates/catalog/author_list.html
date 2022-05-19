@@ -2,25 +2,27 @@
 
 {% block content %}
 
-<h1>Author List</h1>
+<header class="px-4 pt-5 pb-4">
+  <h1 class="">የደራሲ ዝርዝር | Authors List</h1>
+</header>
 
-{% if author_list %}
-  <ul>
-
-  {% for author in author_list %}
+<main class="flex flex-col p-4 h-full">
+  {% if author_list %}
+  <ul class="flex flex-col space-y-2">
+    {% for author in author_list %}
     <li>
-      <a href="{{ author.get_absolute_url }}">
-      {{ author }} ({{author.date_of_birth}} - {% if author.date_of_death %}{{author.date_of_death}}{% endif %})
+      <a href="{{ author.get_absolute_url }}" class="hover:text-black">
+        <button class="flex flex-col justify-center space-y-3 border-2 border-gray-800  w-1/2 p-4 rounded-md">
+          {{ author.first_name }} {{ author.last_name }} ({{author.date_of_birth}} - {% if author.date_of_death %}{{author.date_of_death}}{% endif %})
+        </button>
       </a>
     </li>
-  {% endfor %}
+    {% endfor %}
+  </ul>
 
- </ul>
-{% else %}
+  {% else %}
   <p>There are no authors available.</p>
-{% endif %}
-        
-        
-        
-{% endblock %}
+  {% endif %}
+</main>
 
+{% endblock %}

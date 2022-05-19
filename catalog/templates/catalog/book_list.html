@@ -1,21 +1,26 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Book List</h1>
+<header class="px-4 pt-5 pb-4">
+  <h1 class="">የመጽሓፍ ዝርዝር | Books List</h1>
+</header>
 
-    {% if book_list %}
-    <ul>
+<main class="flex flex-col p-4 h-full">
+  {% if book_list %}
+  <ul class="flex flex-col space-y-2">
+    {% for book in book_list %}
+    <li class="">
+      <a href="{{ book.get_absolute_url }}" class="hover:text-black">
+        <button class="flex flex-col justify-center space-y-3 border-2 border-gray-800  w-1/2 p-4 rounded-md">
+          {{ book.title }}: {{ book.author.first_name }} {{ book.author.last_name }}
+        </button>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
 
-      {% for book in book_list %}
-      <li>
-        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
-      </li>
-      {% endfor %}
-
-    </ul>
-
-    {% else %}
-      <p>There are no books in the library.</p>
-    {% endif %}       
+  {% else %}
+  <p>There are no books in the library.</p>
+  {% endif %}
+</main>
 {% endblock %}
-

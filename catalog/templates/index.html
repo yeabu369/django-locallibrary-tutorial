@@ -1,15 +1,38 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h4 class="mt-10">የመጽሓፍት ቤት ዝርዝር | Library Details</h3>
-    <p>The library has the following record counts:</p>
-    <ul>
-        <li><strong>Books:</strong> {{ num_books }}</li>
-        <li><strong>Copies:</strong> {{ num_instances }}</li>
-        <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
-        <li><strong>Authors:</strong> {{ num_authors }}</li>
+<header class="px-4 pt-5 pb-4">
+    <h4 class="">የመጽሓፍት ቤት ዝርዝር | Library Details</h3>
+</header>
+<main class="flex flex-col p-4 h-full">
+    <p class="text-2xl mb-4">Library record counts</p>
+    <ul class="flex justify-between space-x-10 list-none text-white h-1/2">
+        <li class="flex flex-col justify-center space-y-3 items-center border bg-gray-800 w-1/2 p-4 rounded-md">
+            <h1 class="text-2xl">Books</h1>
+            <p class="text-2xl font-bold font-mono">
+                {{ num_books }}
+            </p>
+        </li>
+        <li class="flex flex-col justify-center space-y-3 items-center border bg-gray-800 w-1/2 p-4 rounded-md">
+            <h1 class="text-2xl">Copies</h1>
+            <p class="text-2xl font-bold font-mono">
+                {{ num_instances }}
+            </p>
+        </li>
+        </li>
+        <li class="flex flex-col justify-center space-y-3 items-center border bg-gray-800 w-1/2 p-4 rounded-md">
+            <h1 class="text-2xl">Copies Available</h1>
+            <p class="text-2xl font-bold font-mono">
+                {{ num_instances_available }}
+            </p>
+        </li>
+        <li class="flex flex-col justify-center space-y-3 items-center border bg-gray-800 w-1/2 p-4 rounded-md">
+            <h1 class="text-2xl">Authors</h1>
+            <p class="text-2xl font-bold font-mono">
+                {{ num_authors }}
+            </p>
+        </li>
     </ul>
-
-
-    <footer>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</footer>
+</main>
+<footer class="border p-4 font-mono">Page visited {{ num_visits }} time{{ num_visits|pluralize }}.</footer>
 {% endblock %}
