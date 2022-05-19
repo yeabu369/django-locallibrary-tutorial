@@ -1,8 +1,6 @@
-# Django Local Library
+# Django Local Library Management System
 
-Tutorial "Local Library" website written in Django.
-
-For detailed information about this project see the associated [MDN tutorial home page](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Tutorial_local_library_website).
+"Local Library Management" website written in Django.
 
 ## Overview
 
@@ -16,7 +14,6 @@ The main features that have currently been implemented are:
 * Librarians can renew reserved books
 
 ![Local Library Model](https://raw.githubusercontent.com/mdn/django-locallibrary-tutorial/master/catalog/static/images/local_library_model_uml.png)
-
 
 ## Quick Start
 
