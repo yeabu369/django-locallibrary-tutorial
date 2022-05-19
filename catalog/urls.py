@@ -1,11 +1,7 @@
-from django.urls import path, include
+from django.urls import path
 
 from . import views
 
-urlpatterns = [
-    ...,
-    path("__reload__/", include("django_browser_reload.urls")),
-]
 
 urlpatterns = [
     path('', views.index, name='index'),
