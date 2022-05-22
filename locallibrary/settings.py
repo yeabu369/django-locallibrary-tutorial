@@ -41,12 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'theme.apps.ThemeConfig',
     'django.contrib.staticfiles',
     # Add our new application 
     'catalog.apps.CatalogConfig', #This object was created for us in /catalog/apps.py
     # 'django_browser_reload',
     'tailwind',
-    'theme',
+    # 'theme',
     'livereload',
 ]
 

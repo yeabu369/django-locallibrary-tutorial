@@ -95,3 +95,5 @@ ENV/
 
 
 .vercel
+
+**/dist/styles.css
